@@ -13,11 +13,14 @@ cd 202301motiur
 
 Copy the yolov5 directory from Motiur to this current directory, it should look like this:  
 ```
--Dockerfile
--README.md
--test-cpu.sh
--test-gpu.sh
-yolov5
+202301motiur$ tree -L 1
+#.
+#├── Dockerfile
+#├── README.md
+#├── test-cpu.sh
+#├── test-gpu.sh
+#└── yolov5
+
 ```   
 
 Copy the two test scripts `test-cpu.sh` and `test-gpu.sh` into the yolov5 directory.  
