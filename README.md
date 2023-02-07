@@ -48,7 +48,10 @@ You will need a reasonably large RAM GPU.
 sudo docker run --gpus all -it -v `pwd`:/project dwheelerau/hawkweed:ubuntu2004 /bin/bash -c "cd /project && bash /build/202301motiur/yolov5/test-gpu.sh"
 ```
 
-# Running inference using the python script on the test data
+# Using the python script directly for image inference  
+The following provides several ways of using the model for hawk weed inference.  
+
+## Running inference using the python script on the test data
 
 ```
 # cpu
@@ -58,7 +61,7 @@ sudo docker run -it -v `pwd`:/project dwheelerau/hawkweed:ubuntu2004 /bin/bash -
 sudo docker run --gpus all -it -v `pwd`:/project dwheelerau/hawkweed:ubuntu2004 /bin/bash -c "cd /project && python /build/202301motiur/yolov5/detect.py --device gpu --weights /build/202301motiur/yolov5/runs/train/exp72/weights/best.pt --img 5320 7968 --conf 0.45 --iou 0.35 --source /build/202301motiur/Test_Images_MacGregorsCreek --name DetectedTest_Images_MacGregorsCreek_gpu --project /project/"
 ```
 
-# Running inference using the python script on your own images
+## Running inference using the python script on your own images
 This assumes you have your images in a folder called `images` located in your current working directory.    
 
 Start the container in detached mode `-d` after mounting your cwd.  
@@ -83,7 +86,7 @@ Execute a command on the running container (the `projects` directory will alread
 sudo docker exec -it dazzling_moser /bin/bash -c "cd /project && python /build/202301motiur/yolov5/detect.py --device cpu --weights /build/202301motiur/yolov5/runs/train/exp72/weights/best.pt --img 5320 7968 --conf 0.45 --iou 0.35 --source /project/images --name iamges_out --project /project/"
 ```
 
-# Running the container interactively  
+## Running the container interactively  
 Start the container in detached mode after mounting your cwd.  
 
 ```
