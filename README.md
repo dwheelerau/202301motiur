@@ -6,7 +6,7 @@ The docker container allows deployment of the model without having to deal with 
 
 The `detect.py` script that runs the model inference can be run using the `docker run` command or interactively by logging into the docker container itself after it is started in `-d` (detected mode). Instructions for both modes of interaction are shown below.  
 
-The following steps are written for Linux users. However, if you are unfortunate enough to use windows (-;,  this somewhat user-friendly [guide](https://github.com/dwheelerau/docker-guide) has instructions on running containers using Windows Subsystems for Linux (WSL) and docker-desktop. After installing both of these apps the instructions should work using the WSL Linux terminal (the guide has some additional instructions).  
+The following steps are written for Linux users. However, if you ~~are unfortunate enough~~ to use windows,  this somewhat user-friendly [guide](https://github.com/dwheelerau/docker-guide) has instructions on running containers using Windows Subsystems for Linux (WSL) and docker-desktop. After installing both of these apps the instructions should work using the WSL Linux terminal (the guide has some additional instructions).  
 
 # Building the docker image  
 Note these steps will take some time depending on the speed of your internet connection.  
