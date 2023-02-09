@@ -96,7 +96,7 @@ Start the container in detached mode after mounting your cwd.
 # -d detached so keep running after command is executed
  sudo docker run -it -d -v `pwd`:/project dwheelerau/hawkweed:ubuntu2004
 ```
-See what it is called.
+See what it is called (see last column of the `NAMES` column at the far left of the printout below.  
 
 ```
 sudo docker ps -a
