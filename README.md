@@ -169,5 +169,5 @@ optional arguments:
 You should be able to interact with this container via the command line and /build/ is mounted in your cwd on the host.  
 
 # Acknowledgements  
-:Motiur - model development
-:Nico - docker insights
+Motiur - model development  
+Nico - docker insights
