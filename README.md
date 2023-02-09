@@ -6,7 +6,7 @@ The docker container allows deployment of the model without having to deal with 
 
 The `detect.py` script that runs the model inference can be run using the `docker run` command or interactively by logging into the docker container itself after it is started in `-d` (detected mode). Instructions for both modes of interaction are shown below.  
 
-The following steps are written for Linux users. However, if you ~~are unfortunate enough~~ to use windows,  this somewhat user-friendly [guide](https://github.com/dwheelerau/docker-guide) has instructions on running containers using Windows Subsystems for Linux (WSL) and docker-desktop. After installing both of these apps the instructions should work using the WSL Linux terminal (the guide has some additional instructions).  
+The following steps are written for Linux users. However, if you ~~are unfortunate enough to~~ use windows,  this somewhat user-friendly [guide](https://github.com/dwheelerau/docker-guide) has instructions on running containers using Windows Subsystems for Linux (WSL) and docker-desktop. After installing both of these apps the instructions should work using the WSL Linux terminal (the guide has some additional instructions).  
 
 # Building the docker image  
 Note these steps will take some time depending on the speed of your internet connection.  
@@ -167,3 +167,9 @@ optional arguments:
 ```
 
 You should be able to interact with this container via the command line and /build/ is mounted in your cwd on the host.  
+
+This is just some random text that I want to see how it looks when you use carrage
+returns to do things instnssdf askdfj kdjfkj dkfjkd jkajf kjaskdfj kasjfk jdkkjdk
+kjkjkjkdjfak jkdsjfka jjasdk fjsdkf jksajdf kjaskf jkdjfk jsakfjad kjkdsj kjk
+kadjkjfdk jakfj akdjk jaskdjf ajskf jaksdj fkajk jasdkj kjasdk jkdj kjk jksdjkjkjk kkjdkjfkdj
+akdfj kdjka sdkfjaks jfkdsj kfajskfjk.
