@@ -6,7 +6,7 @@ The docker container allows deployment of the model without having to deal with 
 
 The `detect.py` script that runs the model inference can be run using the `docker run` command or interactively by logging into the docker container itself after it is started in `-d` (detected mode). Instructions for both modes of interaction are shown below.  
 
-The following steps are written for Linux users. However, if you ~~are unfortunate enough to~~ use windows,  this somewhat user-friendly [guide](https://github.com/dwheelerau/docker-guide) has instructions on running containers using Windows Subsystems for Linux (WSL) and docker-desktop. After installing both of these apps the instructions should work using the WSL Linux terminal (the guide includes an example running a camera trap detection model which you might want to try first if you are knew to all of this).  
+The following steps are written for Linux users. However, if you ~~are unfortunate enough to~~ use windows,  this somewhat user-friendly [guide](https://github.com/dwheelerau/docker-guide) has instructions on running containers using Windows Subsystems for Linux (WSL) and docker-desktop. After installing both of these apps the instructions should work using the WSL Linux terminal (the guide includes an example running a camera trap detection model which you might want to try first if you are new to all of this).  
 
 # Building the docker image  
 Note these steps will take some time depending on the speed of your internet connection.  
@@ -167,3 +167,7 @@ optional arguments:
 ```
 
 You should be able to interact with this container via the command line and /build/ is mounted in your cwd on the host.  
+
+# Acknowledgements  
+:Motiur - model development
+:Nico - docker insights
