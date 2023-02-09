@@ -86,6 +86,8 @@ Execute a command on the running container (the `projects` directory will alread
 sudo docker exec -it dazzling_moser /bin/bash -c "cd /project && python /build/202301motiur/yolov5/detect.py --device cpu --weights /build/202301motiur/yolov5/runs/train/exp72/weights/best.pt --img 5320 7968 --conf 0.45 --iou 0.35 --source /project/images --name iamges_out --project /project/"
 ```
 
+A full list of command line parameters is available using `202301motiur/yolov5/detect.py -h` (shown at the end of this page).    
+
 ## Running the container interactively  
 Start the container in detached mode after mounting your cwd.  
 
@@ -106,6 +108,53 @@ Now you can log in.
 
 ```
 sudo docker exec -it determined_haibt /bin/bash
+
+python ./202301motiur/yolov5/detect.py -h
+
+usage: detect.py [-h] [--weights WEIGHTS [WEIGHTS ...]] [--source SOURCE]
+                 [--data DATA] [--imgsz IMGSZ [IMGSZ ...]]
+                 [--conf-thres CONF_THRES] [--iou-thres IOU_THRES]
+                 [--max-det MAX_DET] [--device DEVICE] [--view-img]
+                 [--save-txt] [--save-conf] [--save-crop] [--nosave]
+                 [--classes CLASSES [CLASSES ...]] [--agnostic-nms]
+                 [--augment] [--visualize] [--update] [--project PROJECT]
+                 [--name NAME] [--exist-ok] [--line-thickness LINE_THICKNESS]
+                 [--hide-labels] [--hide-conf] [--half] [--dnn]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --weights WEIGHTS [WEIGHTS ...]
+                        model path(s)
+  --source SOURCE       file/dir/URL/glob, 0 for webcam
+  --data DATA           (optional) dataset.yaml path
+  --imgsz IMGSZ [IMGSZ ...], --img IMGSZ [IMGSZ ...], --img-size IMGSZ [IMGSZ ...]
+                        inference size h,w
+  --conf-thres CONF_THRES
+                        confidence threshold
+  --iou-thres IOU_THRES
+                        NMS IoU threshold
+  --max-det MAX_DET     maximum detections per image
+  --device DEVICE       cuda device, i.e. 0 or 0,1,2,3 or cpu
+  --view-img            show results
+  --save-txt            save results to *.txt
+  --save-conf           save confidences in --save-txt labels
+  --save-crop           save cropped prediction boxes
+  --nosave              do not save images/videos
+  --classes CLASSES [CLASSES ...]
+                        filter by class: --classes 0, or --classes 0 2 3
+  --agnostic-nms        class-agnostic NMS
+  --augment             augmented inference
+  --visualize           visualize features
+  --update              update all models
+  --project PROJECT     save results to project/detect,name
+  --name NAME           save results to project/name
+  --exist-ok            existing project/name ok, do not increment
+  --line-thickness LINE_THICKNESS
+                        bounding box thickness (pixels)
+  --hide-labels         hide labels
+  --hide-conf           hide confidences
+  --half                use FP16 half-precision inference
+  --dnn                 use OpenCV DNN for ONNX inference
 ```
 
 You should be able to interact with this container via the command line and /build/ is mounted in your cwd on the host.  
