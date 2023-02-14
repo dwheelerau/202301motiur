@@ -50,8 +50,11 @@ The following should mount your current directory and save the test results to i
 ```
 docker run -it -v %cd%:/project dwheelerau/hawkweed:ubuntu2004 /bin/bash -c "cd /project && bash /build/202301motiur/yolov5/test-cpu.sh"
 ```  
+If everything works the following should print to screen.  
 
-## GPU test script  
+![The model running via CPU](figs/fig7.PNG)  
+
+## GPU test script (optional)   
 You will need a reasonably large RAM GPU.  
 ```
 docker run --gpus all -it -v %cd%:/project dwheelerau/hawkweed:ubuntu2004 /bin/bash -c "cd /project && bash /build/202301motiur/yolov5/test-gpu.sh"
@@ -59,17 +62,6 @@ docker run --gpus all -it -v %cd%:/project dwheelerau/hawkweed:ubuntu2004 /bin/b
 
 # Using the python script directly for image inference  
 The following provides several ways of using the model for hawk weed inference.  
-
-## Running inference using the python script on the test data
-
-```
-# cpu
-docker run -it -v %cd%:/project dwheelerau/hawkweed:ubuntu2004 /bin/bash -c "cd /project && python /build/202301motiur/yolov5/detect.py --device cpu --weights /build/202301motiur/yolov5/runs/train/exp72/weights/best.pt --img 5320 7968 --conf 0.45 --iou 0.35 --source /build/202301motiur/Test_Images_MacGregorsCreek --name DetectedTest_Images_MacGregorsCreek_cpu --project /project/"
-
-# or GPU  
-docker run --gpus all -it -v %cd%:/project dwheelerau/hawkweed:ubuntu2004 /bin/bash -c "cd /project && python /build/202301motiur/yolov5/detect.py --device gpu --weights /build/202301motiur/yolov5/runs/train/exp72/weights/best.pt --img 5320 7968 --conf 0.45 --iou 0.35 --source /build/202301motiur/Test_Images_MacGregorsCreek --name DetectedTest_Images_MacGregorsCreek_gpu --project /project/"
-```
-
 ## Running inference using the python script on your own images
 This assumes you have your images in a folder called `images` located in your current working directory.    
 
@@ -80,13 +72,16 @@ Start the container in detached mode `-d` after mounting your cwd.
 # -d detached so keep running after command is executed
  sudo docker run -it -d -v %cd%:/project dwheelerau/hawkweed:ubuntu2004
 ```
-See what it is called.  
+
+See what it is called.   
 ```
 docker ps -a
 CONTAINER ID   IMAGE                            COMMAND       CREATED         STATUS         PORTS     NAMES
 04f40d0ae645   dwheelerau/hawkweed:ubuntu2004   "/bin/bash"   7 seconds ago   Up 6 seconds             dazzling_moser
 ```
-Execute a command on the running container (the `projects` directory will already be mounted in your cwd).  
+
+Execute a command on the running container (the `projects` directory will already be mounted in your cwd). Change the `--source` location if your images
+are stored somewhere other than a folder called `project/images`.  
 
 ```
 # change the name based on the above output from `ps -a`
@@ -113,7 +108,7 @@ docker ps -a
 ##2414a542a929   dwheelerau/hawkweed:ubuntu2004   "/bin/bash"   4 seconds ago   Up 3 seconds             determined_haibt
 ```
 
-Now you can log in.
+Now you can log in. To see the full list of command line options use `-h`.  
 
 ```
 docker exec -it determined_haibt /bin/bash
