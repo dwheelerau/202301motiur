@@ -70,7 +70,7 @@ Start the container in detached mode `-d` after mounting your cwd.
 ```
 # -it is interactive tty
 # -d detached so keep running after command is executed
- sudo docker run -it -d -v %cd%:/project dwheelerau/hawkweed:ubuntu2004
+docker run -it -d -v %cd%:/project dwheelerau/hawkweed:ubuntu2004
 ```
 
 See what it is called.   
@@ -80,14 +80,17 @@ CONTAINER ID   IMAGE                            COMMAND       CREATED         ST
 04f40d0ae645   dwheelerau/hawkweed:ubuntu2004   "/bin/bash"   7 seconds ago   Up 6 seconds             dazzling_moser
 ```
 
+We can see the container is called `dazzling_moser` (this will be different for you). Take note of this name as we use it in the command below.   
+
 Execute a command on the running container (the `projects` directory will already be mounted in your cwd). Change the `--source` location if your images
-are stored somewhere other than a folder called `project/images`.  
+are stored somewhere other than a folder called `test_images`. It will save
+the detections to a new folder called `images_out`.  
 
 ```
 # change the name based on the above output from `ps -a`
 # if GPU available: --gpus all
 # if GPU available: --device gpu
-docker exec -it dazzling_moser /bin/bash -c "cd /project && python /build/202301motiur/yolov5/detect.py --device cpu --weights /build/202301motiur/yolov5/runs/train/exp72/weights/best.pt --img 5320 7968 --conf 0.45 --iou 0.35 --source /project/images --name iamges_out --project /project/"
+docker exec -it dazzling_moser /bin/bash -c "cd /project && python /build/202301motiur/yolov5/detect.py --device cpu --weights /build/202301motiur/yolov5/runs/train/exp72/weights/best.pt --img 5320 7968 --conf 0.45 --iou 0.35 --source test_images --name images_out --project /project/"
 ```
 
 A full list of command line parameters is available using `202301motiur/yolov5/detect.py -h` (shown in the next section).    
