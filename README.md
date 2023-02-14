@@ -36,19 +36,25 @@ Type (or copy/paste) the following command to build the container.
 ```
 docker build -f Dockerfile . -t dwheelerau/hawkweed:ubuntu2004
 ```
+Docker will start to download the entire internet (so this may take some time)!  
+![The image begins to build](figs/fig5.PNG)  
+
+If everything goes well you should see "FINISHED" printed to screen.  
+
+![Finished!](figs/fig6.PNG)  
 
 # Quickstart
 The following should mount your current directory and save the test results to it.
 
 ## CPU test script   
 ```
-sudo docker run -it -v `pwd`:/project dwheelerau/hawkweed:ubuntu2004 /bin/bash -c "cd /project && bash /build/202301motiur/yolov5/test-cpu.sh"
+docker run -it -v %cd%:/project dwheelerau/hawkweed:ubuntu2004 /bin/bash -c "cd /project && bash /build/202301motiur/yolov5/test-cpu.sh"
 ```  
 
 ## GPU test script  
 You will need a reasonably large RAM GPU.  
 ```
-sudo docker run --gpus all -it -v `pwd`:/project dwheelerau/hawkweed:ubuntu2004 /bin/bash -c "cd /project && bash /build/202301motiur/yolov5/test-gpu.sh"
+docker run --gpus all -it -v %cd%:/project dwheelerau/hawkweed:ubuntu2004 /bin/bash -c "cd /project && bash /build/202301motiur/yolov5/test-gpu.sh"
 ```
 
 # Using the python script directly for image inference  
@@ -58,10 +64,10 @@ The following provides several ways of using the model for hawk weed inference.
 
 ```
 # cpu
-sudo docker run -it -v `pwd`:/project dwheelerau/hawkweed:ubuntu2004 /bin/bash -c "cd /project && python /build/202301motiur/yolov5/detect.py --device cpu --weights /build/202301motiur/yolov5/runs/train/exp72/weights/best.pt --img 5320 7968 --conf 0.45 --iou 0.35 --source /build/202301motiur/Test_Images_MacGregorsCreek --name DetectedTest_Images_MacGregorsCreek_cpu --project /project/"
+docker run -it -v %cd%:/project dwheelerau/hawkweed:ubuntu2004 /bin/bash -c "cd /project && python /build/202301motiur/yolov5/detect.py --device cpu --weights /build/202301motiur/yolov5/runs/train/exp72/weights/best.pt --img 5320 7968 --conf 0.45 --iou 0.35 --source /build/202301motiur/Test_Images_MacGregorsCreek --name DetectedTest_Images_MacGregorsCreek_cpu --project /project/"
 
 # or GPU  
-sudo docker run --gpus all -it -v `pwd`:/project dwheelerau/hawkweed:ubuntu2004 /bin/bash -c "cd /project && python /build/202301motiur/yolov5/detect.py --device gpu --weights /build/202301motiur/yolov5/runs/train/exp72/weights/best.pt --img 5320 7968 --conf 0.45 --iou 0.35 --source /build/202301motiur/Test_Images_MacGregorsCreek --name DetectedTest_Images_MacGregorsCreek_gpu --project /project/"
+docker run --gpus all -it -v %cd%:/project dwheelerau/hawkweed:ubuntu2004 /bin/bash -c "cd /project && python /build/202301motiur/yolov5/detect.py --device gpu --weights /build/202301motiur/yolov5/runs/train/exp72/weights/best.pt --img 5320 7968 --conf 0.45 --iou 0.35 --source /build/202301motiur/Test_Images_MacGregorsCreek --name DetectedTest_Images_MacGregorsCreek_gpu --project /project/"
 ```
 
 ## Running inference using the python script on your own images
@@ -72,11 +78,11 @@ Start the container in detached mode `-d` after mounting your cwd.
 ```
 # -it is interactive tty
 # -d detached so keep running after command is executed
- sudo docker run -it -d -v `pwd`:/project dwheelerau/hawkweed:ubuntu2004
+ sudo docker run -it -d -v %cd%:/project dwheelerau/hawkweed:ubuntu2004
 ```
 See what it is called.  
 ```
-sudo docker ps -a
+docker ps -a
 CONTAINER ID   IMAGE                            COMMAND       CREATED         STATUS         PORTS     NAMES
 04f40d0ae645   dwheelerau/hawkweed:ubuntu2004   "/bin/bash"   7 seconds ago   Up 6 seconds             dazzling_moser
 ```
@@ -86,7 +92,7 @@ Execute a command on the running container (the `projects` directory will alread
 # change the name based on the above output from `ps -a`
 # if GPU available: --gpus all
 # if GPU available: --device gpu
-sudo docker exec -it dazzling_moser /bin/bash -c "cd /project && python /build/202301motiur/yolov5/detect.py --device cpu --weights /build/202301motiur/yolov5/runs/train/exp72/weights/best.pt --img 5320 7968 --conf 0.45 --iou 0.35 --source /project/images --name iamges_out --project /project/"
+docker exec -it dazzling_moser /bin/bash -c "cd /project && python /build/202301motiur/yolov5/detect.py --device cpu --weights /build/202301motiur/yolov5/runs/train/exp72/weights/best.pt --img 5320 7968 --conf 0.45 --iou 0.35 --source /project/images --name iamges_out --project /project/"
 ```
 
 A full list of command line parameters is available using `202301motiur/yolov5/detect.py -h` (shown in the next section).    
@@ -97,12 +103,12 @@ Start the container in detached mode after mounting your cwd.
 ```
 # -it is interactive tty
 # -d detached so keep running after command is executed
- sudo docker run -it -d -v `pwd`:/project dwheelerau/hawkweed:ubuntu2004
+ docker run -it -d -v `pwd`:/project dwheelerau/hawkweed:ubuntu2004
 ```
 See what it is called (see last column of the `NAMES` column at the far left of the printout below.  
 
 ```
-sudo docker ps -a
+docker ps -a
 ##CONTAINER ID   IMAGE                            COMMAND       CREATED         STATUS         PORTS     NAMES
 ##2414a542a929   dwheelerau/hawkweed:ubuntu2004   "/bin/bash"   4 seconds ago   Up 3 seconds             determined_haibt
 ```
@@ -110,7 +116,7 @@ sudo docker ps -a
 Now you can log in.
 
 ```
-sudo docker exec -it determined_haibt /bin/bash
+docker exec -it determined_haibt /bin/bash
 
 python ./202301motiur/yolov5/detect.py -h
 
