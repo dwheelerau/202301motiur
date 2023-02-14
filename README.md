@@ -92,8 +92,9 @@ the detections to a new folder called `images_out`.
 # if GPU available: --device gpu
 docker exec -it dazzling_moser /bin/bash -c "cd /project && python /build/202301motiur/yolov5/detect.py --device cpu --weights /build/202301motiur/yolov5/runs/train/exp72/weights/best.pt --img 5320 7968 --conf 0.45 --iou 0.35 --source test_images --name images_out --project /project/"
 ```
+A new folder is created called `images_out` with the results.  
 
-A full list of command line parameters is available using `202301motiur/yolov5/detect.py -h` (shown in the next section).    
+![The results are in images_out](figs/fig9.PNG)  
 
 ## Running the container interactively  
 Start the container in detached mode after mounting your cwd.  
