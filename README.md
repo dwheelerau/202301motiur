@@ -6,41 +6,31 @@ The docker container allows deployment of the model without having to deal with 
 
 The `detect.py` script that runs the model inference can be run using the `docker run` command or interactively by logging into the docker container itself after it is started in `-d` (detected mode). Instructions for both modes of interaction are shown below.  
 
-The following steps are written for Linux users. However, if you ~~are unfortunate enough to~~ use windows,  this somewhat user-friendly [guide](https://github.com/dwheelerau/docker-guide) has instructions on running containers using Windows Subsystems for Linux (WSL) and docker-desktop. After installing both of these apps the instructions should work using the WSL Linux terminal (the guide includes an example running a camera trap detection model which you might want to try first if you are new to all of this).  
+The following steps are written for windows users, see the Linux branch if you use that system. I've written a somewhat user-friendly [guide](https://github.com/dwheelerau/docker-guide) to installing docker on windows. This guide includes an example running a camera trap detection model (megadetector) which you might want to try first if you are new to all of this.  
 
-# Building the docker image  
+# Getting a copy of this repo to your computer  
+click on the `code` button on the main page of the repo (see below) and download
+the zip file to your desktop (or a location of your choice) and unzip the folder. 
+
+![Download the repo as a zip and unzip it to your desktop](figs/fig1.PNG)
+
 Note these steps will take some time depending on the speed of your internet connection.  
 
-First clone this repo.  
-```
-git clone https://github.com/dwheelerau/202301motiur.git
-```
-Change into the repo directory 
-```
-cd 202301motiur
-```
+Copy the yolov5 directory (request from Motiur) to this directory, it should look like this
 
-Copy the yolov5 directory (request from Motiur) to this current directory, it should look like this:  
-```
-202301motiur$ tree -L 1
-#├── Dockerfile
-#├── README.md
-#├── test-cpu.sh
-#├── test-gpu.sh
-#├── Test_Images_MacGregorsCreek
-#└── yolov5
+![Make sure you copy the "yolov5" directory to the repo folder](figs/fig2.PNG)  
 
-```   
+Then copy the two test scripts `test-cpu.sh` and `test-gpu.sh` into the yolov5 directory.  
 
-Copy the two test scripts `test-cpu.sh` and `test-gpu.sh` into the yolov5 directory.  
-```
-cp test-* yolov5/
-```
+# Build the container.   
+Open a command prompt in the repo directory by typing `cmd` in the browser window (circled below).  
 
-Build the container.  
+![type "cmd" (without quotes in the file explorer window)](figs/fig3.PNG)  
+
+Type (or copy/paste) the following command to build the container.  
 
 ```
-sudo docker build -f Dockerfile . -t dwheelerau/hawkweed:ubuntu2004
+docker build -f Dockerfile . -t dwheelerau/hawkweed:ubuntu2004
 ```
 
 # Quickstart
