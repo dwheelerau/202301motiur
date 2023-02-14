@@ -27,6 +27,10 @@ Open a command prompt in the repo directory by typing `cmd` in the browser windo
 
 ![type "cmd" (without quotes in the file explorer window)](figs/fig3.PNG)  
 
+This should open a command line prompt in the current directory.  
+
+![A command line prompt in the repo directory](figs/fig4.PNG)  
+
 Type (or copy/paste) the following command to build the container.  
 
 ```
