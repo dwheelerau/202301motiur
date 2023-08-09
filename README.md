@@ -96,14 +96,14 @@ CONTAINER ID   IMAGE                            COMMAND       CREATED         ST
 We can see the container is called `dazzling_moser` (this will be different for you). Take note of this name as we use it in the command below.   
 
 Execute a command on the running container (the `projects` directory will already be mounted in your cwd). Change the `--source` location if your images
-are stored somewhere other than a folder called `test_images`. It will save
+are stored somewhere other than a folder called `images`. It will save
 the detections to a new folder called `images_out`.  
 
 ```
 # change the name based on the above output from `ps -a`
 # if GPU available: --gpus all
 # if GPU available: --device gpu
-docker exec -it dazzling_moser /bin/bash -c "cd /project && python /build/202301motiur/yolov5/detect.py --device cpu --weights /build/202301motiur/yolov5/runs/train/exp72/weights/best.pt --img 5320 7968 --conf 0.45 --iou 0.35 --source test_images --name images_out --project /project/"
+docker exec -it dazzling_moser /bin/bash -c "cd /project && python /build/202301motiur/yolov5/detect.py --device cpu --weights /build/202301motiur/yolov5/runs/train/exp72/weights/best.pt --img 5320 7968 --conf 0.45 --iou 0.35 --source images --name images_out --project /project/"
 ```
 A new folder is created called `images_out` with the results.  
 
