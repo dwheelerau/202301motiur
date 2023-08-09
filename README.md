@@ -1,6 +1,19 @@
 # 202301motiur  
 A docker image for easier deployment of the hawkweed yolo detection model.   
 
+# TOC  
+- [202301motiur](#202301motiur)
+- [Introduction](#introduction)
+- [Getting a copy of this repo to your computer](#getting-a-copy-of-this-repo-to-your-computer)
+- [Build the container.](#build-the-container)
+- [Quickstart](#quickstart)
+  * [CPU test script](#cpu-test-script)
+  * [GPU test script (optional)](#gpu-test-script--optional-)
+- [Using the python script directly for image inference](#using-the-python-script-directly-for-image-inference)
+  * [Running inference using the python script on your own images](#running-inference-using-the-python-script-on-your-own-images)
+  * [Running the container interactively](#running-the-container-interactively)
+- [Acknowledgements](#acknowledgements)
+
 # Introduction  
 The docker container allows deployment of the model without having to deal with tedious software installation steps and operating system differences. The image is based on Ubuntu linux 20.04 with the GPU CUDA drivers pre-installed. The high resolution images processed by this model require GPU with a reasonably large amount of RAM (>4GB), however, the detections can be carried out in CPU mode (~12 seconds per image).  
 
